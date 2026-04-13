@@ -1,0 +1,49 @@
+services:
+  - type: worker
+    name: third-seller-bot
+    runtime: docker
+    plan: free
+    autoDeploy: true
+    envVars:
+      - key: DB_PATH
+        value: /var/data/shop.db
+      - key: TELETHON_SESSION_PATH
+        value: /var/data/telethon_session
+      # Các biến dưới đây set trong Render Dashboard (Secret)
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: BANK_NAME
+        sync: false
+      - key: BANK_ID
+        sync: false
+      - key: BANK_ACCOUNT
+        sync: false
+      - key: BANK_OWNER
+        sync: false
+      - key: TELETHON_API_ID
+        sync: false
+      - key: TELETHON_API_HASH
+        sync: false
+      - key: TELETHON_PHONE
+        sync: false
+      - key: SOURCE_BOT
+        sync: false
+      - key: TRIGGER_KEYWORD
+        sync: false
+      - key: PRICE_MARKUP
+        sync: false
+      - key: SYNC_DELAY
+        sync: false
+      - key: MENU_LIMIT
+        sync: false
+      - key: HISTORY_LIMIT
+        sync: false
+    disk:
+      name: data
+      mountPath: /var/data
+      sizeGB: 1
+

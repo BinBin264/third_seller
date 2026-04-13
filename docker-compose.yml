@@ -1,0 +1,10 @@
+services:
+  bot:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Giữ DB và Telethon session bên ngoài container
+      - ./data:/app/data
+      - ./telethon_session.session:/app/telethon_session.session
