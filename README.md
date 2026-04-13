@@ -55,7 +55,7 @@ DB nằm ở `./data/` và Telethon session file sẽ được giữ lại theo 
 Repo đã có sẵn `render.yaml`.
 
 - Tạo service bằng Render Blueprint (trỏ tới repo).
-- Set env vars (Secrets) theo `.env` của bạn.
+- Sau khi service được tạo, vào **Environment** và set các env (Secrets) theo `.env` của bạn (ví dụ `BOT_TOKEN`, Telethon creds, ...), rồi redeploy.
 
 Lưu ý: **Render Free không hỗ trợ Persistent Disk**, nên DB và Telethon session sẽ nằm ở filesystem tạm (có thể mất khi redeploy/restart).
 
@@ -65,6 +65,8 @@ Mặc định `render.yaml` (free) set:
 
 - `DB_PATH=/tmp/shop.db`
 - `TELETHON_SESSION_PATH=/tmp/telethon_session`
+- `MENU_LIMIT=0`
+- `SYNC_DELAY=1.0`
 
 Nếu bạn muốn dữ liệu bền vững (khuyến nghị), hãy dùng plan có hỗ trợ disk và set:
 

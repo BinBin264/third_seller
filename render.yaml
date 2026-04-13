@@ -10,34 +10,7 @@ services:
         value: /tmp/shop.db
       - key: TELETHON_SESSION_PATH
         value: /tmp/telethon_session
-      # Các biến dưới đây set trong Render Dashboard (Secret)
-      - key: BOT_TOKEN
-        sync: false
-      - key: ADMIN_ID
-        sync: false
-      - key: ADMIN_USERNAME
-        sync: false
-      - key: BANK_NAME
-        sync: false
-      - key: BANK_ID
-        sync: false
-      - key: BANK_ACCOUNT
-        sync: false
-      - key: BANK_OWNER
-        sync: false
-      - key: TELETHON_API_ID
-        sync: false
-      - key: TELETHON_API_HASH
-        sync: false
-      - key: TELETHON_PHONE
-        sync: false
-      - key: SOURCE_BOT
-        sync: false
-      - key: TRIGGER_KEYWORD
-        sync: false
-      - key: PRICE_MARKUP
-        sync: false
       - key: SYNC_DELAY
-        sync: false
+        value: "1.0"
       - key: MENU_LIMIT
-        sync: false
+        value: "0"
