@@ -50,15 +50,21 @@ docker compose logs -f
 
 DB nằm ở `./data/` và Telethon session file sẽ được giữ lại theo mount trong `docker-compose.yml`.
 
-## Deploy Render (Background Worker + Persistent Disk)
+## Deploy Render (Free tier)
 
 Repo đã có sẵn `render.yaml`.
 
 - Tạo service bằng Render Blueprint (trỏ tới repo).
-- Tạo Persistent Disk (Render sẽ tạo theo `render.yaml`) mount tại `/var/data`.
 - Set env vars (Secrets) theo `.env` của bạn.
 
-Mặc định `render.yaml` set:
+Lưu ý: **Render Free không hỗ trợ Persistent Disk**, nên DB và Telethon session sẽ nằm ở filesystem tạm (có thể mất khi redeploy/restart).
+
+Mặc định `render.yaml` (free) set:
+
+- `DB_PATH=/tmp/shop.db`
+- `TELETHON_SESSION_PATH=/tmp/telethon_session`
+
+Nếu bạn muốn dữ liệu bền vững (khuyến nghị), hãy dùng plan có hỗ trợ disk và set:
 
 - `DB_PATH=/var/data/shop.db`
 - `TELETHON_SESSION_PATH=/var/data/telethon_session`
