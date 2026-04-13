@@ -33,6 +33,7 @@ TELETHON_PHONE: str = _require("TELETHON_PHONE")
 SOURCE_BOT: str = os.getenv("SOURCE_BOT", "mmoshopacc_bot")
 TRIGGER_KEYWORD: str = os.getenv("TRIGGER_KEYWORD", "Cập nhật kho hàng")
 TELETHON_SESSION_PATH: str = os.getenv("TELETHON_SESSION_PATH", "telethon_session")
+TELETHON_STRING_SESSION: str = os.getenv("TELETHON_STRING_SESSION", "")
 
 # ── Pricing ───────────────────────────────────────────────────
 PRICE_MARKUP: float = float(os.getenv("PRICE_MARKUP", "25"))

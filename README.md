@@ -29,6 +29,7 @@ Biến quan trọng:
 - `PRICE_MARKUP`: % markup giá (vd `25`).
 - `DB_PATH`: đường dẫn SQLite DB.
 - `TELETHON_SESSION_PATH`: đường dẫn session Telethon (không cần đuôi `.session`).
+- `TELETHON_STRING_SESSION`: StringSession Telethon (khuyến nghị khi deploy cloud).
 
 ## Chạy local (không Docker)
 
@@ -60,6 +61,14 @@ Repo đã có sẵn `render.yaml`.
 Lưu ý: **Render Free không hỗ trợ Persistent Disk**, nên DB và Telethon session sẽ nằm ở filesystem tạm (có thể mất khi redeploy/restart).
 
 Ngoài ra, Render Free thường chỉ cho chạy **Web Service**. Repo đã kèm health endpoint `GET /health` để Render healthcheck, còn bot vẫn chạy nền bình thường.
+
+Telethon đăng nhập lần đầu cần OTP/2FA và không thể nhập tương tác trên Render. Khuyến nghị dùng `TELETHON_STRING_SESSION`:
+
+```bash
+python3 gen_string_session.py
+```
+
+Copy giá trị `TELETHON_STRING_SESSION=...` và set vào Render Environment (Secrets).
 
 Mặc định `render.yaml` (free) set:
 

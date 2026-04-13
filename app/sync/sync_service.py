@@ -7,6 +7,7 @@ import logging
 import re
 
 from telethon import TelegramClient, events
+from telethon.sessions import StringSession
 
 from app.config import (
     TELETHON_API_ID,
@@ -16,6 +17,7 @@ from app.config import (
     SYNC_DELAY,
     TRIGGER_KEYWORD,
     TELETHON_SESSION_PATH,
+    TELETHON_STRING_SESSION,
 )
 from app.services.product_service import upsert_product, get_all_user_ids, clear_products
 from app.services.pricing_service import apply_markup
@@ -184,7 +186,11 @@ async def _menu_cron(client: TelegramClient, interval_hours: int = 4) -> None:
 # ── Client & event handler ────────────────────────────────────────────────────
 
 def create_telethon_client() -> TelegramClient:
-    # Telethon sẽ tự thêm đuôi ".session" nếu cần. Cho phép set path bền vững trên cloud.
+    # Ưu tiên StringSession để deploy cloud (không cần nhập OTP tương tác).
+    if TELETHON_STRING_SESSION:
+        return TelegramClient(StringSession(TELETHON_STRING_SESSION), TELETHON_API_ID, TELETHON_API_HASH)
+
+    # Fallback: session file (Telethon tự thêm đuôi ".session" nếu cần).
     return TelegramClient(TELETHON_SESSION_PATH, TELETHON_API_ID, TELETHON_API_HASH)
 
 
