@@ -59,6 +59,8 @@ Repo đã có sẵn `render.yaml`.
 
 Lưu ý: **Render Free không hỗ trợ Persistent Disk**, nên DB và Telethon session sẽ nằm ở filesystem tạm (có thể mất khi redeploy/restart).
 
+Ngoài ra, Render Free thường chỉ cho chạy **Web Service**. Repo đã kèm health endpoint `GET /health` để Render healthcheck, còn bot vẫn chạy nền bình thường.
+
 Mặc định `render.yaml` (free) set:
 
 - `DB_PATH=/tmp/shop.db`

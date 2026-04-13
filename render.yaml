@@ -1,9 +1,10 @@
 services:
-  - type: worker
+  - type: web
     name: third-seller-bot
     runtime: docker
     plan: free
     autoDeploy: true
+    healthCheckPath: /health
     envVars:
       - key: DB_PATH
         value: /tmp/shop.db
@@ -39,6 +40,4 @@ services:
       - key: SYNC_DELAY
         sync: false
       - key: MENU_LIMIT
-        sync: false
-      - key: HISTORY_LIMIT
         sync: false
